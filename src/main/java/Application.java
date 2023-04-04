@@ -15,7 +15,7 @@ public class Application {
             if (resultSet.next()) {
                 String name = "Имя: " + resultSet.getString("имя");
                 String lastname = "Семья: " + resultSet.getString("фамилия");
-                String gender = "Пол: " + resultSet.getString(4);
+                String gender = "Пол: " + resultSet.getString(5);
                 int age = resultSet.getInt(5);
 
                 System.out.println(name);
