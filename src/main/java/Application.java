@@ -1,29 +1,28 @@
 import java.sql.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) throws SQLException {
-
         final String user = "postgres";
         final String password = "123RaMoS174RUS321";
         final String url = "jdbc:postgresql://localhost:5432/skypro";
 
-        try (final Connection connection = DriverManager.getConnection(url, user, password);
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM employee WHERE ID = (?)")) {
-            statement.setInt(1, 4);
-            final ResultSet resultSet = statement.executeQuery();
+        Employee employee = new Employee();
+        EmployeeDAO employeeDAO = new EmployeeDAOImpl();
+        employeeDAO.getAllEmployee().forEach(System.out::println);
+        Integer employeeID = employeeDAO.add(employee);
+        System.out.println(employeeDAO.getAllEmployee());
+        System.out.println();
+        employeeDAO.updateEmployee(employeeID, employee);
+        employeeDAO.deleteEmployee(employeeDAO.getBuyId(employeeID));
 
-            if (resultSet.next()) {
-                String name = "Имя: " + resultSet.getString("имя");
-                String lastname = "Семья: " + resultSet.getString("фамилия");
-                String gender = "Пол: " + resultSet.getString(5);
-                int age = resultSet.getInt(5);
-
-                System.out.println(name);
-                System.out.println(lastname);
-                System.out.println(gender);
-                System.out.println("Возраст: " + age);
-            }
-        }
+        System.out.println(employeeDAO.getBuyId(4));
     }
 }
+
+
 

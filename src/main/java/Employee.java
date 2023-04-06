@@ -1,10 +1,27 @@
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+
 public class Employee {
+
+    @Id
+    @Column(name = "id")
     private int id;
+    @Column(name = "first_name")
     private String first_name;
+    @Column(name = "last_name")
     private String last_name;
+    @Column(name = "gender")
     private String gender;
+    @Column(name = "gender")
     private int age;
-    private City city;
+    @Column(name = "city_id")
+    private int city;
 
     public Employee() {
         this.id = this.id;
@@ -13,10 +30,6 @@ public class Employee {
         this.gender = this.gender;
         this.age = this.age;
         this.city = this.city;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public void setId(int id) {
@@ -55,11 +68,11 @@ public class Employee {
         this.age = age;
     }
 
-    public City getCity() {
+    public int getCity() {
         return city;
     }
 
-    public void setCity(City city) {
+    public void setCity(int city) {
         this.city = city;
     }
 

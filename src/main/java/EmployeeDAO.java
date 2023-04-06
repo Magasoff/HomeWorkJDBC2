@@ -1,9 +1,8 @@
-import java.io.IOException;
 import java.util.List;
 
 public interface EmployeeDAO {
 
-    void add(Employee employee);
+    Integer add(Employee employee);
 
     Employee getBuyId(int Id);
 
@@ -11,8 +10,5 @@ public interface EmployeeDAO {
 
     void updateEmployee(int id, Employee employee);
 
-    void deleteEmployee(int id);
-
-    Employee getById(int id);
+    void deleteEmployee(Employee employee);
 }
-
